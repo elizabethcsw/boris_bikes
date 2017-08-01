@@ -12,7 +12,7 @@ describe DockingStation do
   end
 
   it "should respond to bike" do
-    bike = DockingStation.new.release_bike
+    bike = Bike.new
     DockingStation.new.bike == true
 
   end
