@@ -4,28 +4,26 @@ describe DockingStation do
   describe '#release_bike' do
     it "should release a bike I just docked" do
       biky = Bike.new
-      station = DockingStation.new
+      station = DockingStation.new(2)
       station.dock(biky)
       station.release_bike == biky
     end
 
     it "should raise error when release bike in the case of no available bike (empty) in the docking station" do
-      biky = Bike.new
-      station = DockingStation.new
+      station = DockingStation.new(0)
       expect{station.release_bike}.to raise_error("There is no available bike")
     end
   end
 
-  describe '#dock()' do
-    it "should raise error when attempt to dock more than 20 bike" do
-      station = DockingStation.new
-      DockingStation::DEFAULT_CAPACITY.times {station.dock(Bike.new)}
+  describe '#initialize' do
+    it 'should be able to set limit of docking station' do
+      station= DockingStation.new (40)
+      40.times {station.dock(Bike.new)}
       biky=Bike.new
       expect{station.dock(biky)}.to raise_error ("Dock station is full")
+
     end
-
   end
-
 end
 
 =begin
@@ -55,5 +53,14 @@ end
     station = DockingStation.new
     station.dock(biky)
     expect{station.dock(biko)}.to raise_error
+  end
+
+  describe '#dock()' do
+    it "should raise error when attempt to dock more than 20" do
+      station = DockingStation.new
+      station.capacity.times {station.dock(Bike.new)}
+      biky=Bike.new
+      expect{station.dock(biky)}.to raise_error ("Dock station is full")
+    end
   end
 =end
