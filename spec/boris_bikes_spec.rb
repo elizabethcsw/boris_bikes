@@ -8,10 +8,21 @@ describe DockingStation do
       station.dock(biky)
       station.release_bike == biky
     end
+
     it "should raise error when release bike in the case of no available bike (empty) in the docking station" do
       biky = Bike.new
       station = DockingStation.new
       expect{station.release_bike}.to raise_error("There is no available bike")
+    end
+  end
+
+  describe '#dock()' do
+    it "should raise error when attempt to dock more than 1 bike" do
+      biky=Bike.new
+      biko=Bike.new
+      station = DockingStation.new
+      station.dock(biky)
+      expect{station.dock(biko)}.to raise_error
     end
 
   end
