@@ -4,13 +4,13 @@ describe DockingStation do
   describe '#release_bike' do
     it "should release a bike I just docked" do
       biky = Bike.new
-      station = DockingStation.new(2)
+      station = DockingStation.new
       station.dock(biky)
       station.release_bike == biky
     end
 
     it "should raise error when release bike in the case of no available bike (empty) in the docking station" do
-      station = DockingStation.new(0)
+      station = DockingStation.new
       expect{station.release_bike}.to raise_error("There is no available bike")
     end
   end
@@ -21,7 +21,12 @@ describe DockingStation do
       40.times {station.dock(Bike.new)}
       biky=Bike.new
       expect{station.dock(biky)}.to raise_error ("Dock station is full")
-
+    end
+    it 'should have a default capacity for the docking station' do
+      station= DockingStation.new
+      station.capacity.times {station.dock(Bike.new)}
+      biky=Bike.new
+      expect{station.dock(biky)}.to raise_error ("Dock station is full")
     end
   end
 end
@@ -63,4 +68,10 @@ end
       expect{station.dock(biky)}.to raise_error ("Dock station is full")
     end
   end
+
+
+
+
+
+
 =end
