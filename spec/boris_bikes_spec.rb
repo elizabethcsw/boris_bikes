@@ -19,7 +19,7 @@ describe DockingStation do
   describe '#dock()' do
     it "should raise error when attempt to dock more than 20 bike" do
       station = DockingStation.new
-      20.times {station.dock(Bike.new)}
+      DockingStation::DEFAULT_CAPACITY.times {station.dock(Bike.new)}
       biky=Bike.new
       expect{station.dock(biky)}.to raise_error ("Dock station is full")
     end
