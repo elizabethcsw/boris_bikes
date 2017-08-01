@@ -17,12 +17,11 @@ describe DockingStation do
   end
 
   describe '#dock()' do
-    it "should raise error when attempt to dock more than 1 bike" do
-      biky=Bike.new
-      biko=Bike.new
+    it "should raise error when attempt to dock more than 20 bike" do
       station = DockingStation.new
-      station.dock(biky)
-      expect{station.dock(biko)}.to raise_error
+      20.times {station.dock(Bike.new)}
+      biky=Bike.new
+      expect{station.dock(biky)}.to raise_error ("Dock station is full")
     end
 
   end
@@ -48,5 +47,13 @@ end
   it "should respond to bike" do
     bike = Bike.new
     DockingStation.new.bike == true
+  end
+
+  it "should raise error when attempt to dock more than 1 bike" do
+    biky=Bike.new
+    biko=Bike.new
+    station = DockingStation.new
+    station.dock(biky)
+    expect{station.dock(biko)}.to raise_error
   end
 =end
