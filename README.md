@@ -7,6 +7,6 @@ This is the boris bikes challenges.
 ###User Stories
 | Objects  | Messages |
 | ------------- | ------------- |
-| User  | TBC  |
-| Bike | check_if_working  |
-| Docking Station | release_a_bike  |
+| Person  | TBC  |
+| Bike | working?  |
+| Docking Station | release_bike  |
